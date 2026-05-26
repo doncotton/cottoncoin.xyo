@@ -18,6 +18,7 @@ const chainIds = {
   bsc: 56,
   ganache: 1337,
   hardhat: 31337,
+  localhost: 31337,
   mainnet: 1,
   "optimism-mainnet": 10,
   "polygon-mainnet": 137,
@@ -77,6 +78,16 @@ const config: HardhatUserConfig = {
         mnemonic,
       },
       chainId: chainIds.hardhat,
+    },
+    // Target for `hardhat node` — use with `--network localhost`
+    localhost: {
+      accounts: {
+        count: 10,
+        mnemonic,
+        path: "m/44'/60'/0'/0",
+      },
+      chainId: chainIds.localhost,
+      url: "http://127.0.0.1:8545",
     },
     ganache: {
       accounts: {
